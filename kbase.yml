@@ -1,0 +1,15 @@
+module-name:
+    ranjanContigCount
+
+module-description:
+    Testing kb-sdk. It needs to be deleted after testing.
+
+service-language:
+    python
+
+module-version:
+    0.0.1
+
+owners:
+    [pranjan77]
+
