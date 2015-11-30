@@ -1,4 +1,5 @@
 #BEGIN_HEADER
+from biokbase.workspace.client import Workspace as workspaceService
 #END_HEADER
 
 
@@ -29,7 +30,7 @@ class ranjanContigCount:
         #END_CONSTRUCTOR
         pass
 
-    def count_contigs(self, ctx, workspace_name, contigset):
+    def count_contigs(self, ctx, workspace_name, contigset_id):
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN count_contigs
