@@ -141,19 +141,21 @@ public class RanjanContigCountClient {
     /**
      * <p>Original spec-file function name: count_contigs</p>
      * <pre>
+     * Count contigs in a ContigSet
+     * contigset_id - the ContigSet to count.
      * </pre>
-     * @param   workspaceName   instance of String
-     * @param   contigset   instance of original type "contigset_id" (Insert your typespec information here.)
-     * @return   instance of type {@link us.kbase.ranjancontigcount.CountContigResults CountContigResults}
+     * @param   arg1   instance of original type "workspace_name" (A string representing a workspace name.)
+     * @param   arg2   instance of original type "contigset_id" (A string representing a ContigSet id.)
+     * @return   instance of type {@link us.kbase.ranjancontigcount.CountContigsResults CountContigsResults}
      * @throws IOException if an IO exception occurs
      * @throws JsonClientException if a JSON RPC exception occurs
      */
-    public CountContigResults countContigs(String workspaceName, String contigset, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+    public CountContigsResults countContigs(String arg1, String arg2, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
         List<Object> args = new ArrayList<Object>();
-        args.add(workspaceName);
-        args.add(contigset);
-        TypeReference<List<CountContigResults>> retType = new TypeReference<List<CountContigResults>>() {};
-        List<CountContigResults> res = caller.jsonrpcCall("ranjanContigCount.count_contigs", args, retType, true, true, jsonRpcContext);
+        args.add(arg1);
+        args.add(arg2);
+        TypeReference<List<CountContigsResults>> retType = new TypeReference<List<CountContigsResults>>() {};
+        List<CountContigsResults> res = caller.jsonrpcCall("ranjanContigCount.count_contigs", args, retType, true, true, jsonRpcContext);
         return res.get(0);
     }
 }

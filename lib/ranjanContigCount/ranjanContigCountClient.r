@@ -41,9 +41,9 @@ ranjanContigCountClient <- function(url, token = NULL, flatten = TRUE,
         return(parsed[['result']])
     }
 
-    ret_client_object_ref[['count_contigs']] <- function(workspace_name, contigset) {
+    ret_client_object_ref[['count_contigs']] <- function(workspace_name, contigset_id) {
         ret <- ret_client_object_ref[['json_rpc_call']]("ranjanContigCount.count_contigs", list(
-                workspace_name, contigset
+                workspace_name, contigset_id
         ))
         return(ret[[1]])
     }

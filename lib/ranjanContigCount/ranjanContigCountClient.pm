@@ -111,7 +111,7 @@ sub new
 
 =head2 count_contigs
 
-  $return = $obj->count_contigs($workspace_name, $contigset)
+  $return = $obj->count_contigs($workspace_name, $contigset_id)
 
 =over 4
 
@@ -120,11 +120,12 @@ sub new
 =begin html
 
 <pre>
-$workspace_name is a string
-$contigset is a ranjanContigCount.contigset_id
-$return is a ranjanContigCount.CountContigResults
+$workspace_name is a ranjanContigCount.workspace_name
+$contigset_id is a ranjanContigCount.contigset_id
+$return is a ranjanContigCount.CountContigsResults
+workspace_name is a string
 contigset_id is a string
-CountContigResults is a reference to a hash where the following keys are defined:
+CountContigsResults is a reference to a hash where the following keys are defined:
 	contig_count has a value which is an int
 
 </pre>
@@ -133,11 +134,12 @@ CountContigResults is a reference to a hash where the following keys are defined
 
 =begin text
 
-$workspace_name is a string
-$contigset is a ranjanContigCount.contigset_id
-$return is a ranjanContigCount.CountContigResults
+$workspace_name is a ranjanContigCount.workspace_name
+$contigset_id is a ranjanContigCount.contigset_id
+$return is a ranjanContigCount.CountContigsResults
+workspace_name is a string
 contigset_id is a string
-CountContigResults is a reference to a hash where the following keys are defined:
+CountContigsResults is a reference to a hash where the following keys are defined:
 	contig_count has a value which is an int
 
 
@@ -145,7 +147,8 @@ CountContigResults is a reference to a hash where the following keys are defined
 
 =item Description
 
-
+Count contigs in a ContigSet
+contigset_id - the ContigSet to count.
 
 =back
 
@@ -163,11 +166,11 @@ CountContigResults is a reference to a hash where the following keys are defined
 							       "Invalid argument count for function count_contigs (received $n, expecting 2)");
     }
     {
-	my($workspace_name, $contigset) = @args;
+	my($workspace_name, $contigset_id) = @args;
 
 	my @_bad_arguments;
         (!ref($workspace_name)) or push(@_bad_arguments, "Invalid type for argument 1 \"workspace_name\" (value was \"$workspace_name\")");
-        (!ref($contigset)) or push(@_bad_arguments, "Invalid type for argument 2 \"contigset\" (value was \"$contigset\")");
+        (!ref($contigset_id)) or push(@_bad_arguments, "Invalid type for argument 2 \"contigset_id\" (value was \"$contigset_id\")");
         if (@_bad_arguments) {
 	    my $msg = "Invalid arguments passed to count_contigs:\n" . join("", map { "\t$_\n" } @_bad_arguments);
 	    Bio::KBase::Exceptions::ArgumentValidationError->throw(error => $msg,
@@ -264,7 +267,7 @@ sub _validate_version {
 
 =item Description
 
-Insert your typespec information here.
+A string representing a ContigSet id.
 
 
 =item Definition
@@ -287,7 +290,38 @@ a string
 
 
 
-=head2 CountContigResults
+=head2 workspace_name
+
+=over 4
+
+
+
+=item Description
+
+A string representing a workspace name.
+
+
+=item Definition
+
+=begin html
+
+<pre>
+a string
+</pre>
+
+=end html
+
+=begin text
+
+a string
+
+=end text
+
+=back
+
+
+
+=head2 CountContigsResults
 
 =over 4
 
